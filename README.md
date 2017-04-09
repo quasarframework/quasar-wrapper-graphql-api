@@ -12,7 +12,7 @@ This wrapper requires a previously initialized Quasar app, before it can be inst
 If you already have a Quasar app installed, carry out this command in the root directory of your app.
 
 ```Bash
-quasar wrap api apollo
+quasar wrap graphql-api
 ```
 
 If you are just starting with Quasar, please [follow the instructions to install the CLI](http://quasar-framework.org/guide/) and [create a default Quasar app](http://quasar-framework.org/guide/#Create-your-first-App).
