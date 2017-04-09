@@ -11,23 +11,29 @@ This wrapper requires a previously initialized Quasar app, before it can be inst
 
 If you already have a Quasar app installed, carry out this command in the root directory of your app.
 
-`quasar wrap api apollo`
+```Bash
+quasar wrap api apollo
+```
 
 If you are just starting with Quasar, please [follow the instructions to install the CLI](http://quasar-framework.org/guide/) and [create a default Quasar app](http://quasar-framework.org/guide/#Create-your-first-App).
 
 This `quasar wrap` command will load up the needed files under the newly added `/api` directory. Once the CLI is finished, `cd` into the `/api` directory and then run:
 
-`npm install`
+```Bash
+npm install
+```
 
 Once the dependencies for the Apollo GraphQL server have been installed, you can run the server with:
 
-`npm start`
+```Bash
+npm start
+```
 
 This bare bones API server will also start under Nodemon for development purposes, which means your file changes will also restart the server automatically.
 
 Once the server has started, you should see something like this:
 
-```
+```Bash
 > nodemon ./server.js --exec babel-node
 
 [nodemon] 1.11.0
@@ -56,7 +62,7 @@ On the left side of GraphiQL, go ahead and enter the text below and press the pl
 
 Don't copy and paste the text! Please actually enter the text manually.
 
-```
+```Javascript
 {greeter 
   {
   message
@@ -68,7 +74,7 @@ Notice you also get code auto-completion in GraphiQL. Isn't that cool!
 
 Go ahead and change the query to this adding your name in the quotes:
 
-```
+```Javascript
 {greeter(name: "") 
   {
   message
@@ -87,11 +93,13 @@ Ok. So, we've gotten the GraphQL server runnning. Great!
 
 Now we need to get Quasar running with `Apollo-Client` and `Vue-Apollo`. To do this, make sure you are in your Quasar app root and run this command.
 
-`npm install --save vue-apollo apollo-client`
+```Bash
+npm install --save vue-apollo apollo-client
+```
 
 Now open your `main.js` file and replace its contents with the code below:
 
-```
+```Javascript
 // === DEFAULT / CUSTOM STYLE ===
 // WARNING! always comment out ONE of the two require() calls below.
 // 1. use next line to activate CUSTOM STYLE (./src/themes)
@@ -141,7 +149,7 @@ The comments within the above code explain what has been added to get Apollo and
 
 Now go to `/components/index.vue` and replace its contents with the following code:
 
-```
+```Javascript
 <template>
   <q-layout>
     <div slot="header" class="toolbar">
@@ -210,7 +218,7 @@ export default {
 
 This code has no comments, but all we did was removed the mouse movement code from the default template. We also imported the `graphql-tag` module to create our query. 
 
-```
+```Javascript
 const messageQuery = gql`
   {
     greeter
@@ -225,7 +233,18 @@ Notice the query is the same exact query we used in GraphiQL earlier.
 
 And we also initialized our data needed for our component with `greeter` and also the apollo object to call the query, which returned the data we need for `greeter.message` in our template. This call is made once the component is built and rendered. 
 
-That is it for this quick and simple wrapper for Apollo, which adds GraphQL functionality to Quasar.  
+```Javascript
+  data: () => ({
+    greeter: ''
+  }),
+  apollo: {
+    greeter: {
+      query: messageQuery
+    }
+  }
+```
+
+That is it for this quick and simple wrapper for Apollo, which adds minimal GraphQL functionality to Quasar.  
  
 For more information about using Apollo with Quasar (via Vue), [check out the VueApollo docs](https://github.com/Akryum/vue-apollo). For more information about Apollo, check out [their docs](http://www.apollodata.com/) and also check out [the GraphQL docs](http://graphql.org/learn/) for more about GraphQL. 
 
