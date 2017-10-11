@@ -48,7 +48,7 @@ The API will be running under the URL mentioned above.
 
 You should also be able to access the GraphiQL GraphQL Introspection UI under:
 
-[http://localhost:8081/graphiql](http://localhost:8081/graphql)
+[http://localhost:8081/graphiql](http://localhost:8081/graphiql)
 
 ###### Add image of GraphiQL UI here!
 
